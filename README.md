@@ -332,6 +332,39 @@ de *sniffing* do SceneView):
 powershell -ExecutionPolicy Bypass -File tools/inspect-model-formats.ps1 3d_models
 ```
 
+### Baixar os arquivos
+
+Use os links diretos abaixo (o *Save link as…* do navegador salva com o nome e a
+extensão corretos). Evite o `raw.githubusercontent.com` para o `.obj`: ele é servido
+como texto e alguns navegadores/gerenciadores **abrem em vez de baixar** — e o app
+valida o formato pela extensão.
+
+* [`ArkZ_logo.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.glb)
+* [`ArkZ_logo.obj`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.obj)
+* [`ArkZ_logo.ply`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.ply)
+* [`ArkZ_logo.stl`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.stl)
+* [`Edificio.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/Edificio.glb)
+
+Os mesmos cinco arquivos estão anexados em **Assets** nas
+[releases](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases) — é o
+caminho mais confiável, porque o download vem com o nome certo e o cabeçalho de
+anexo. Tamanhos esperados (arquivo menor = download cortado):
+
+| Arquivo | Bytes | SHA-256 |
+|---|---|---|
+| `ArkZ_logo.glb` | 94.796 | `c77885aba3fad3007855d0caf81ebb6d3cce004a915686568998070029fd9693` |
+| `ArkZ_logo.obj` | 144.504 | `1d06d92f8c77b993ba7a53445f4479c4dd6c0c6176c93b2e7e6cb7b6321dd7eb` |
+| `ArkZ_logo.ply` | 34.912 | `fc8a0a6e4efd738f501c2e2da4b58bf6b12dc6cfad7a2a01a859c9f32b1b6f02` |
+| `ArkZ_logo.stl` | 90.684 | `f7e30b515a9a3b3fadd3dd9c3591f141853138fd4941c9e8705d085555cba2a3` |
+| `Edificio.glb` | 1.358.704 | `30cb3de4c013073a83aa2f68a80c9fc911656dbc76b08bf621f194d22e45b35f` |
+
+Conferência no PC:
+
+```powershell
+Get-ChildItem 3d_models | Select-Object Name, Length          # compare com a tabela
+Get-FileHash .\ArkZ_logo.glb -Algorithm SHA256                # e com o SHA-256 acima
+```
+
 ### Como usar no aparelho
 
 1. Baixe os arquivos (clone do repositório ou o botão **Download** da pasta no
