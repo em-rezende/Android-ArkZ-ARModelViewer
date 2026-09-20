@@ -6,7 +6,7 @@
 # Por que isso importa: o SceneView identifica o formato pelo conteudo, nao pela
 # extensao. Um .obj cuja primeira face esta depois dos 4 KB iniciais e tratado
 # como glTF, falha ao abrir e o app mostra "nao foi possivel ler o modelo" — o
-# O ArkZ ARModelViewer contorna isso convertendo o arquivo para .glb na importacao.
+# ArkZ ARModelViewer contorna isso convertendo o arquivo para .glb na importacao.
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$Folder
@@ -45,6 +45,9 @@ function Test-ObjPrefix([byte[]]$bytes) {
             }
         }
         $at++
+        # CRLF conta como UMA quebra de linha: sem isso o LF logo apos o CR viraria
+        # uma linha vazia extra e o numero da linha reportado ficaria dobrado.
+        if ($at -lt $limit -and $bytes[$at - 1] -eq 13 -and $bytes[$at] -eq 10) { $at++ }
     }
     return 'nao e OBJ (nenhuma face no prefixo)'
 }

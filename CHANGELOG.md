@@ -4,6 +4,17 @@ Todas as mudanças relevantes do **ArkZ ARModelViewer** são registradas neste
 arquivo. O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
 e o projeto usa [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [Não publicado]
+
+### Adicionado
+
+- Pasta [`3d_models/`](3d_models) com **cinco modelos de teste** — o logotipo em
+  glTF binário (`.glb`), Wavefront OBJ, PLY binário e STL binário, mais um edifício
+  em `.glb` — e a seção *Modelos 3D para teste* no README, com o que cada arquivo
+  exercita e como carregá-los no aparelho.
+- `.gitattributes`: extensões de modelo 3D marcadas como binárias (STL/PLY/GLB
+  binários seriam corrompidos pela conversão de fim de linha).
+
 ## [1.0.0] — 2026-09-20
 
 Primeira versão pública: o fluxo completo de RA funcionando de ponta a ponta —

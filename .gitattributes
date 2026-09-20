@@ -16,6 +16,20 @@
 *.blend      binary
 *.skp        binary
 
+# Modelos 3D de exemplo: tratados como binarios para o Git nunca alterar o
+# conteudo (STL/PLY binarios seriam corrompidos pela conversao de fim de linha).
+*.glb        binary
+*.gltf       binary
+*.obj        binary
+*.mtl        binary
+*.ply        binary
+*.stl        binary
+*.3mf        binary
+*.skp        binary
+*.blend      binary
+*.fbx        binary
+*.dae        binary
+
 # Scripts que rodam no Windows continuam em CRLF
 *.ps1        text eol=crlf
 *.bat        text eol=crlf

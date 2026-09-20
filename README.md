@@ -159,6 +159,7 @@ ArkZ ARModelViewer/
 │       │   └── util/ScreenCapture.kt         # captura de tela (SurfaceMirrorer + ImageReader)
 │       └── res/…                             # strings (pt-BR padrão + 7 idiomas), tema e ícones
 ├── images/                                   # capturas de tela usadas neste README
+├── 3d_models/                                # modelos de teste (glb, obj, ply, stl)
 ├── docs/
 │   ├── release-notes/                        # texto dos releases publicados no GitHub
 │   └── social-preview.png                    # imagem 1280×640 do "Social preview"
@@ -304,6 +305,54 @@ Ao escolher um arquivo não suportado, o app explica o motivo na barra de status
 A ferramenta `tools/inspect-model-formats.ps1 <pasta>` mostra, para cada arquivo,
 o formato que o SceneView **realmente** detecta (é a mesma lógica de *sniffing*
 da biblioteca) — útil quando um modelo "não abre".
+
+Modelos prontos para teste (os mesmos formatos desta tabela, com um logotipo e um
+edifício): veja [Modelos 3D para teste](#modelos-3d-para-teste).
+
+---
+
+## Modelos 3D para teste
+
+A pasta [`3d_models/`](3d_models) traz **cinco arquivos** prontos para exercitar o
+carregamento, a detecção de formato e a escala automática: o mesmo logotipo em
+**quatro formatos** e um edifício em `.glb`.
+
+| Arquivo | Formato | Tamanho | O que ele exercita |
+|---|---|---|---|
+| `ArkZ_logo.glb` | glTF binário (`.glb`) | 93 KB | caminho nativo recomendado — referência para comparar com os outros quatro |
+| `ArkZ_logo.obj` | Wavefront OBJ | 141 KB | extração de geometria em OBJ (928 vértices, 786 faces); a biblioteca reconhece o arquivo como OBJ porque a primeira face (linha 119, no byte 3.091) cai **dentro** dos primeiros 4 KB que ela examina |
+| `ArkZ_logo.ply` | PLY binário (`binary_little_endian`, Blender 5.2) | 34 KB | PLY binário — o menor arquivo do conjunto |
+| `ArkZ_logo.stl` | STL binário (exportado do SketchUp) | 89 KB | STL binário com 1.812 triângulos; bom caso para conferir a maior dimensão medida e a escala |
+| `Edificio.glb` | glTF binário (`.glb`) | 1,3 MB | modelo de arquitetura, bem maior: tempo de carregamento, iluminação/sombreamento e ajuste fino de escala |
+
+**Total: 1,7 MB.** Para conferir os formatos como a biblioteca os vê (mesma lógica
+de *sniffing* do SceneView):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/inspect-model-formats.ps1 3d_models
+```
+
+### Como usar no aparelho
+
+1. Baixe os arquivos (clone do repositório ou o botão **Download** da pasta no
+   GitHub) e copie-os para o celular — a pasta **Downloads** funciona bem.
+2. No app, toque em **Carregar modelo** e escolha o arquivo.
+3. Como é o mesmo logotipo em quatro formatos, dá para comparar o resultado de cada
+   caminho de carregamento no marcador: posição e orientação devem coincidir. Se
+   algum exportador tiver usado outra unidade (mm/cm), o tamanho inicial muda — é o
+   que o botão de **escala automática** e o slider **Tamanho** corrigem.
+
+Com o `adb`:
+
+```bash
+adb push 3d_models/. /sdcard/Download/3d_models/
+```
+
+> Os arquivos são de autoria da **Ark-Z Arquitetura Ltda** e acompanham a licença do
+> projeto ([GPL-3.0](LICENSE)). O `ArkZ_logo.obj` referencia um `.mtl` que não é
+> distribuído (o exportador não o gerou): a geometria carrega normalmente, apenas
+> sem cor de material — coerente com a tabela de *Formatos suportados*, onde OBJ é
+> descrito como "geometria; sem `.mtl`/texturas".
 
 ---
 
