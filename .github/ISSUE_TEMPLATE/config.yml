@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Dúvidas de uso e solução de problemas
+    url: https://github.com/em-rezende/Android-ArkZ-ARModelViewer#solu%C3%A7%C3%A3o-de-problemas
+    about: Marcador não reconhecido, escala do modelo, captura de tela, idioma — boa parte dos casos já está documentada no README.
+  - name: Falhas de segurança
+    url: https://github.com/em-rezende/Android-ArkZ-ARModelViewer/security/policy
+    about: Não abra issue pública para vulnerabilidades; veja a política de segurança (SECURITY.md).
+  - name: Site do desenvolvedor
+    url: https://em-rezende.github.io/
+    about: Outros projetos e formas de contato.

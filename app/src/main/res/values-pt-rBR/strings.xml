@@ -85,6 +85,8 @@
 
     <!-- Sobre -->
     <string name="about_description">Visualizador de modelos 3D em Realidade Aumentada com marcadores de imagem (ARCore + SceneView/Filament). Carregue um modelo, aponte a câmera para uma figura impressa e veja o modelo fixo sobre ela.</string>
+    <string name="about_developer_name" translatable="false">Ezequiel M. Rezende</string>
+    <string name="about_developer_name_label">Desenvolvedor: %1$s</string>
     <string name="about_developer">Ark-Z Arquitetura Ltda.</string>
     <string name="about_site">https://em-rezende.github.io/</string>
     <string name="about_email">emrezende@gmail.com</string>

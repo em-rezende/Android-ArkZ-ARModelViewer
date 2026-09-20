@@ -69,6 +69,7 @@
 
     <!-- 关于 -->
     <string name="about_description">使用图像标记的增强现实 3D 模型查看器（ARCore + SceneView/Filament）。加载模型，将相机对准打印的图案，即可看到模型固定在图案上。</string>
+    <string name="about_developer_name_label">开发者：%1$s</string>
     <string name="about_version">版本 %1$s</string>
     <string name="about_open_site">打开网站</string>
     <string name="about_send_email">发送电子邮件</string>

@@ -1,3 +1,17 @@
+/*
+ * ArkZ ARModelViewer — visualizador de modelos 3D em Realidade Aumentada.
+ * Copyright (C) 2026 Ark-Z Arquitetura Ltda
+ *
+ * Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo sob
+ * os termos da GNU General Public License, versão 3, publicada pela Free Software
+ * Foundation. Este programa é distribuído na esperança de que seja útil, mas SEM
+ * NENHUMA GARANTIA; sem mesmo a garantia implícita de COMERCIABILIDADE ou
+ * ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO. Veja o arquivo LICENSE na raiz do projeto.
+ *
+ * Autoria: Ark-Z Arquitetura Ltda — desenvolvedor: Ezequiel M. Rezende.
+ * https://github.com/em-rezende/Android-ArkZ-ARModelViewer
+ */
+
 package com.arkz.armodelviewer.ui
 
 import android.content.Context
@@ -1848,7 +1862,8 @@ private fun HelpDialog(onDismiss: () -> Unit) {
 }
 
 /**
- * "Sobre": quem desenvolve o app, site, e-mail de contato e a versão instalada.
+ * "Sobre": quem assina o app (empresa e desenvolvedor), site, e-mail de contato e
+ * a versão instalada.
  *
  * Os dois atalhos do rodapé abrem o **site** e o **cliente de e-mail** — o usuário
  * não precisa copiar os endereços da tela.
@@ -1873,6 +1888,13 @@ private fun AboutDialog(
                 Text(
                     text = stringResource(R.string.about_developer),
                     style = MaterialTheme.typography.titleSmall,
+                )
+                Text(
+                    text = stringResource(
+                        R.string.about_developer_name_label,
+                        stringResource(R.string.about_developer_name),
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
                 )
                 Text(
                     text = stringResource(R.string.about_site),

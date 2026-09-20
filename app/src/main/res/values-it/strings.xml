@@ -69,6 +69,7 @@
 
     <!-- Informazioni -->
     <string name="about_description">Visualizzatore di modelli 3D in Realtà Aumentata con marcatori di immagine (ARCore + SceneView/Filament). Carica un modello, inquadra una figura stampata e vedi il modello fissato su di essa.</string>
+    <string name="about_developer_name_label">Sviluppatore: %1$s</string>
     <string name="about_version">Versione %1$s</string>
     <string name="about_open_site">Apri il sito</string>
     <string name="about_send_email">Invia e-mail</string>

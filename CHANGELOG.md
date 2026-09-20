@@ -72,11 +72,24 @@ modelo fixo sobre ele, com ajuste fino de rotação, tamanho e altura.
 - Android Gradle Plugin 9.4.0 / Gradle 9.7.1, `minSdk 24`, `targetSdk 36` e
   `compileSdk 37` (exigência do SceneView 4.38.0), Kotlin + Compose.
 - `applicationId` / `namespace` `com.arkz.armodelviewer`.
+- Assinatura do APK de release por `keystore.properties` (fora do controle de
+  versão) — sem o arquivo, o build continua funcionando e gera um APK sem
+  assinatura.
+
+**Projeto e documentação**
+- Licença **GNU GPL-3.0** com aviso de copyright e cabeçalho GPL-3.0 nos
+  **14 arquivos Kotlin**.
+- [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SECURITY.md`](SECURITY.md) e modelos de
+  *issue* em `.github/ISSUE_TEMPLATE/` (Bug e Ideia).
+- `tools/publish-github.ps1` (repositório + release pelo GitHub CLI) e
+  `tools/generate-social-preview.ps1` (imagem de compartilhamento 1280×640).
 
 ### Notas
 
-- Esta versão **não** acompanha APK assinado; compile a partir do código-fonte
-  (veja *Como compilar e instalar* no README).
+- O release no GitHub traz o **APK assinado** `ArkZ-ARModelViewer-1.0.0.apk`
+  (45,8 MB, SHA-256 `2ff2546a…56b4`), assinado com a chave de release do projeto
+  (RSA 4096, APK Signature Scheme v2, `CN=Ark-Z Arquitetura Ltda`). Compilar do
+  código-fonte continua possível — veja *Como compilar e instalar* no README.
 - Requer aparelho com suporte a **ARCore** + Google Play Services for AR.
 
 [1.0.0]: https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/tag/v1.0.0

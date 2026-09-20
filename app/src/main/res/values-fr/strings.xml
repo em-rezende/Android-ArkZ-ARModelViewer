@@ -69,6 +69,7 @@
 
     <!-- À propos -->
     <string name="about_description">Visionneuse de modèles 3D en Réalité Augmentée avec des marqueurs d\'image (ARCore + SceneView/Filament). Chargez un modèle, pointez la caméra vers une figure imprimée et voyez le modèle fixé dessus.</string>
+    <string name="about_developer_name_label">Développeur : %1$s</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_open_site">Ouvrir le site</string>
     <string name="about_send_email">Envoyer un e-mail</string>

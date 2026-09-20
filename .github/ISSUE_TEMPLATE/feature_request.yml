@@ -1,0 +1,27 @@
+name: Ideia / melhoria
+description: Sugestão de funcionalidade ou melhoria no app
+title: "[Ideia]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual problema você tem hoje
+      description: Descreva a situação real que motivou a ideia (o objetivo é entender a necessidade, não a solução).
+      placeholder: "Ex.: preciso medir distâncias entre dois marcadores detectados..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Como você imagina a solução
+      description: Opcional — se você já pensou em um jeito de resolver, descreva aqui.
+    validations:
+      required: false
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas que você já tentou
+      description: Opcional — outros apps, contornos no app atual ou limitações que encontrou.
+    validations:
+      required: false

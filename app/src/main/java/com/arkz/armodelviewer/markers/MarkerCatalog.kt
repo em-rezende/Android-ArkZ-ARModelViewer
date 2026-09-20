@@ -1,3 +1,17 @@
+/*
+ * ArkZ ARModelViewer — visualizador de modelos 3D em Realidade Aumentada.
+ * Copyright (C) 2026 Ark-Z Arquitetura Ltda
+ *
+ * Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo sob
+ * os termos da GNU General Public License, versão 3, publicada pela Free Software
+ * Foundation. Este programa é distribuído na esperança de que seja útil, mas SEM
+ * NENHUMA GARANTIA; sem mesmo a garantia implícita de COMERCIABILIDADE ou
+ * ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO. Veja o arquivo LICENSE na raiz do projeto.
+ *
+ * Autoria: Ark-Z Arquitetura Ltda — desenvolvedor: Ezequiel M. Rezende.
+ * https://github.com/em-rezende/Android-ArkZ-ARModelViewer
+ */
+
 package com.arkz.armodelviewer.markers
 
 import android.content.Context

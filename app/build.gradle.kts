@@ -1,10 +1,21 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     // O plugin do compilador Compose e obrigatorio a partir do Kotlin 2.0.
     alias(libs.plugins.compose.compiler)
+}
+
+// Credenciais de assinatura do APK de release. Ficam em keystore.properties, na
+// raiz do projeto e FORA do controle de versao (veja .gitignore). Sem esse arquivo
+// o build continua funcionando, mas o release sai sem assinatura.
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        keystorePropertiesFile.inputStream().use { load(it) }
+    }
 }
 
 android {
@@ -24,6 +35,19 @@ android {
         versionName = "1.0.0"
     }
 
+    signingConfigs {
+        // So e criada quando keystore.properties existe: assim o repositorio
+        // publico compila (sem assinatura) em qualquer maquina.
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -31,6 +55,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 

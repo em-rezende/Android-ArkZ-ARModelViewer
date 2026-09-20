@@ -69,6 +69,7 @@
 
     <!-- About -->
     <string name="about_description">3D model viewer in Augmented Reality with image markers (ARCore + SceneView/Filament). Load a model, point the camera at a printed image and see the model anchored to it.</string>
+    <string name="about_developer_name_label">Developer: %1$s</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_open_site">Open website</string>
     <string name="about_send_email">Send e-mail</string>

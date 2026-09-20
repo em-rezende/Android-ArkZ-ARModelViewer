@@ -69,6 +69,7 @@
 
     <!-- Über -->
     <string name="about_description">3D-Modellbetrachter in Augmented Reality mit Bildmarkern (ARCore + SceneView/Filament). Laden Sie ein Modell, richten Sie die Kamera auf ein gedrucktes Bild und sehen Sie das Modell darauf verankert.</string>
+    <string name="about_developer_name_label">Entwickler: %1$s</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_open_site">Website öffnen</string>
     <string name="about_send_email">E-Mail senden</string>

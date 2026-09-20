@@ -117,6 +117,20 @@ publicar um APK instalável:
 > `keystore.properties` estão no `.gitignore`. Guarde a chave e as senhas em
 > lugar seguro — sem ela não é possível publicar atualizações do mesmo app.
 
+### Assinatura dos APKs publicados
+
+Os APKs das [releases](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases)
+são assinados com a chave de release do projeto (RSA 4096, *APK Signature Scheme
+v2*). Para conferir o arquivo baixado:
+
+```bash
+apksigner verify --print-certs ArkZ-ARModelViewer-1.0.0.apk
+```
+
+O certificado deve trazer `CN=Ark-Z Arquitetura Ltda` e o SHA-256
+`03:6D:8B:55:0B:C0:00:78:09:8F:89:1E:03:30:D4:2F:18:DF:DD:D4:39:D6:06:90:EF:4A:E8:EF:DC:C8:F9:87`.
+Compare também o `SHA-256` do arquivo com o publicado nas notas do release.
+
 ---
 
 ## Estrutura do projeto
@@ -145,15 +159,21 @@ ArkZ ARModelViewer/
 │       │   └── util/ScreenCapture.kt         # captura de tela (SurfaceMirrorer + ImageReader)
 │       └── res/…                             # strings (pt-BR padrão + 7 idiomas), tema e ícones
 ├── images/                                   # capturas de tela usadas neste README
-├── docs/release-notes/                       # texto dos releases publicados no GitHub
+├── docs/
+│   ├── release-notes/                        # texto dos releases publicados no GitHub
+│   └── social-preview.png                    # imagem 1280×640 do "Social preview"
+├── .github/ISSUE_TEMPLATE/                   # modelos de issue (Bug, Ideia, links)
 ├── gradle/libs.versions.toml                 # catálogo de versões
 ├── tools/
 │   ├── generate-assets.ps1                   # ícones, marcadores e folhas de impressão
+│   ├── generate-social-preview.ps1           # imagem de compartilhamento (1280×640)
 │   ├── inspect-model-formats.ps1             # mostra o formato que o SceneView detecta
 │   ├── publish-github.ps1                    # publica repositório + release no GitHub
 │   ├── generated-markers/                    # marcadores alternativos (sem texto)
 │   └── print/                                # folhas prontas para imprimir (QR + legenda abaixo)
 ├── CHANGELOG.md                              # histórico de versões (Keep a Changelog)
+├── CONTRIBUTING.md                           # como relatar problemas e contribuir
+├── SECURITY.md                               # política de segurança
 ├── LICENSE                                   # GNU General Public License v3.0
 ├── .gitattributes / .gitignore               # fim de linha (LF) e o que não é versionado
 └── README.md
@@ -168,7 +188,7 @@ ArkZ ARModelViewer/
 
 ## Idiomas
 
-Há tradução completa (**96 strings**) para oito idiomas:
+Há tradução completa (**97 strings**) para oito idiomas:
 
 | Idioma | Pasta | Observação |
 |---|---|---|
@@ -181,9 +201,9 @@ Há tradução completa (**96 strings**) para oito idiomas:
 | Italiano | `values-it/` | — |
 | Mandarim (chinês simplificado) | `values-zh-rCN/` | — |
 
-`app_name`, `about_developer`, `about_site`, `about_email` e os nomes dos idiomas
-(`Português (Brasil)`, `English`, `中文（简体）`…) são marcados
-`translatable="false"`.
+`app_name`, `about_developer`, `about_developer_name` (o nome do desenvolvedor),
+`about_site`, `about_email` e os nomes dos idiomas (`Português (Brasil)`,
+`English`, `中文（简体）`…) são marcados `translatable="false"`.
 
 ### Menu "Idioma" (forçar o idioma)
 
@@ -560,6 +580,15 @@ está instalado e autenticado. Sem o `gh`, ele imprime o passo a passo manual
 (`git push -u origin main --tags` + criação do release pela interface web).
 Para só conferir o estado atual, sem alterar nada, use a opção `-Check`.
 
+### Passos que só a interface web do GitHub faz
+
+* **Social preview** (imagem exibida ao compartilhar o link do repositório): envie
+  `docs/social-preview.png` em *Settings → Social preview → Upload an image* — a
+  API não permite definir essa imagem. Para regerar a sua:
+  `powershell -ExecutionPolicy Bypass -File tools/generate-social-preview.ps1`.
+* **Descrição e topics** já são configurados pelo script; sem o `gh`, preencha-os à
+  mão em *Settings* (a descrição sugerida está em `tools/publish-github.ps1`).
+
 ---
 
 ## Autoria e contato
@@ -572,10 +601,13 @@ Para só conferir o estado atual, sem alterar nada, use a opção `-Check`.
 | **E-mail** | emrezende@gmail.com |
 | **Repositório** | <https://github.com/em-rezende/Android-ArkZ-ARModelViewer> |
 
-As mesmas informações aparecem no aplicativo, em menu ⋮ → **Sobre**. Para relatar
-um problema ou sugerir algo, abra uma *issue* no repositório ou use **Enviar
-feedback por e-mail** no menu do app — o item **Copiar diagnóstico** já prepara
-versão, aparelho, modelo/marcador atual e o último status para anexar.
+As mesmas informações aparecem no aplicativo, em menu ⋮ → **Sobre** (empresa,
+desenvolvedor, site, e-mail e a versão instalada). Para relatar um problema ou
+sugerir algo, abra uma *issue* no repositório — veja
+[CONTRIBUTING.md](CONTRIBUTING.md) — ou use **Enviar feedback por e-mail** no menu
+do app; o item **Copiar diagnóstico** já prepara versão, aparelho, modelo/marcador
+atual e o último status para anexar. Falhas de segurança têm um canal próprio, em
+[SECURITY.md](SECURITY.md).
 
 ---
 
