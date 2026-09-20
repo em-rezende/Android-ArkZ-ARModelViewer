@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Kamera-Berechtigung -->
+    <string name="permission_title">Kameraberechtigung erforderlich</string>
+    <string name="permission_rationale">ARCore nutzt die Kamera, um die Umgebung zu erfassen und die Bildmarker zu erkennen. Ohne diese Berechtigung kann der Augmented-Reality-Modus nicht gestartet werden.</string>
+    <string name="permission_denied_hint">Die Berechtigung wurde abgelehnt. Erlauben Sie den Kamerazugriff in den App-Einstellungen, um Augmented Reality zu nutzen.</string>
+    <string name="permission_grant">Kamerazugriff erlauben</string>
+    <string name="permission_open_settings">App-Einstellungen öffnen</string>
+
+    <!-- Symbolleiste -->
+    <string name="action_pick_model">3D-Modell laden</string>
+    <string name="action_reset">Neu starten</string>
+    <string name="action_choose_marker">Marker wählen</string>
+    <string name="action_auto_scale">Automatische Skalierung (an Marker anpassen)</string>
+    <string name="action_exit">Beenden</string>
+    <string name="action_adjust_model">Modellanpassungen (Drehung und Größe)</string>
+    <string name="action_capture">Bildschirm aufnehmen</string>
+
+    <!-- Marker -->
+    <string name="marker_dialog_title">Marker verwalten</string>
+    <string name="marker_dialog_hint">Richten Sie die Kamera auf den gewählten QR-Code. Sie können ihn ausdrucken (15 cm breit) oder auf einem anderen Bildschirm anzeigen.</string>
+    <string name="marker_all">Alle Marker</string>
+    <string name="marker_preview_description">Markervorschau</string>
+    <string name="marker_create">Marker erstellen/laden</string>
+    <string name="marker_create_title">Marker erstellen/laden</string>
+    <string name="marker_create_hint">Geben Sie dem Marker einen Namen und wählen Sie eine Option: \"Marker erstellen\" zeichnet ein neues Muster in der App und speichert das PNG zum Drucken; \"Marker laden\" verwendet ein Bild, das bereits auf dem Gerät ist (ohne Namen wird der Dateiname verwendet).</string>
+    <string name="marker_create_name_label">Markername</string>
+    <string name="marker_create_name_hint">Z. B. Projekt 1</string>
+    <string name="marker_create_confirm">Marker erstellen</string>
+    <string name="marker_load_confirm">Marker laden</string>
+    <string name="marker_export">Markerbild zum Drucken speichern</string>
+    <string name="marker_remove">Benutzerdefinierten Marker entfernen</string>
+    <string name="status_marker_created">Marker \"%1$s\" erstellt. PNG gespeichert in %2$s</string>
+    <string name="status_marker_created_no_export">Marker \"%1$s\" erstellt (PNG konnte nicht exportiert werden: %2$s)</string>
+    <string name="status_marker_generated">Marker \"%1$s\" erstellt. PNG gespeichert in %2$s — drucken Sie ihn 15 cm breit und richten Sie die Kamera darauf</string>
+    <string name="status_marker_name_required">Geben Sie dem Marker vor dem Erstellen einen Namen</string>
+    <string name="status_marker_create_failed">Marker konnte nicht erstellt werden</string>
+    <string name="status_marker_exported">Bild gespeichert in %1$s</string>
+
+    <!-- Modell laden -->
+    <string name="model_dialog_title">3D-Modell laden</string>
+    <string name="model_dialog_hint">Die Systemauswahl öffnet sich ohne Typfilter: Android kennt die Typen von .glb-, .obj- und .ply-Dateien nicht und mit Filter würden sie ausgegraut erscheinen. Wählen Sie die Modelldatei — die App prüft die Endung und erklärt, wenn das Format nicht unterstützt wird.</string>
+    <string name="model_dialog_formats">Unterstützte Formate: .glb, .gltf (glTF 2.0), .obj, .stl, .ply und .3mf. Das Format .dae (COLLADA) wird nicht unterstützt: konvertieren Sie es in .glb.</string>
+    <string name="model_dialog_pick">Datei wählen</string>
+    <string name="model_dialog_cancel">Abbrechen</string>
+
+    <!-- Modellanpassungen -->
+    <string name="adjust_title">Modellanpassungen</string>
+    <string name="adjust_rotation_x">Drehung X (neigen)</string>
+    <string name="adjust_rotation_y">Drehung Y (wenden)</string>
+    <string name="adjust_rotation_z">Drehung Z (rollen)</string>
+    <string name="adjust_size">Größe (größte Abmessung)</string>
+    <string name="adjust_elevation_z">Höhe Z (Markerebene)</string>
+    <string name="adjust_reset">Zurücksetzen</string>
+    <!-- Menü (drei Punkte, oben rechts) -->
+    <string name="menu_more">Menü</string>
+    <string name="menu_help">Hilfe</string>
+    <string name="menu_about">Über</string>
+    <string name="menu_feedback_email">Feedback per E-Mail senden</string>
+    <string name="menu_rate_play">Auf Google Play bewerten</string>
+    <string name="menu_copy_diagnostics">Diagnose kopieren (Support)</string>
+    <string name="menu_share_app">App teilen</string>
+    <string name="menu_capture_quality">Aufnahmequalität</string>
+    <string name="menu_print_sheet">Druckblatt des Markers exportieren</string>
+    <string name="value_none">keins</string>
+
+    <!-- Hilfe -->
+    <string name="help_body">1. MODELL LADEN\nTippen Sie unten rechts auf die Schaltfläche (3D-Modell laden) und wählen Sie eine Datei .glb, .gltf, .obj, .stl, .ply oder .3mf. Die Formate .dae (COLLADA) und .fbx werden nicht unterstützt — konvertieren Sie sie in .glb (Blender: Datei ▸ Exportieren ▸ glTF 2.0). Aus CAD/SketchUp exportierte Modelle sind meist in Millimetern; die App skaliert sie automatisch. Modelle mit Tausenden von Teilen brauchen Dutzende Sekunden (die Statusleiste informiert).\n\n2. MARKER WÄHLEN ODER ERSTELLEN\nTippen Sie unten auf das QR-Code-Symbol (Marker verwalten) und dann auf Marker erstellen/laden:\n• Marker erstellen: Namen eingeben — die App zeichnet das Muster, speichert es als Marker und exportiert das PNG nach Pictures/ArkZ ARModelViewer/Marcadores; drucken Sie es 15 cm breit.\n• Marker laden: verwenden Sie ein Bild, das bereits auf dem Gerät ist (Foto, Screenshot, QR-Code).\n\n3. KAMERA AUSRICHTEN\nRichten Sie die Kamera aus 30–60 cm auf das gedruckte Bild, bei gutem Licht und ohne Reflexionen, Falten oder sehr flache Winkel. Das Bild sollte einen guten Teil des Rahmens füllen. Ohne geladenes Modell erscheint ein cyanfarbener Würfel darauf — das zeigt, dass die Erkennung funktioniert.\n\n4. MODELL ANPASSEN\nIm Panel Modellanpassungen (Regler-Symbol in der Leiste): Drehung X/Y/Z (anfangs 0°, 0° und 0°), Größe (größte Abmessung in Metern) und Höhe Z (bewegt das Modell von der Markerebene weg oder zu ihr hin). Auf dem Bildschirm ändert die Pinch-Geste ebenfalls die Größe, und die automatische Skalierung passt das Modell an die Markerbreite an.\n\n5. BILDSCHIRM AUFNEHMEN\nDie Kamera-Schaltfläche speichert die aktuelle Ansicht (Kamera + Modell, ohne Oberfläche) in Pictures/ArkZ ARModelViewer — mit Auslösegeräusch.\n\nWEITERE TIPPS\n• Neu starten (erste Schaltfläche der Leiste) verwirft die Erkennungen und setzt Drehung, Größe und Höhe auf die Standardwerte zurück.\n• Wenn ein Modell nicht erscheint, erklärt Logcat den Grund: adb logcat -s ArkZARModelViewer</string>
+
+    <!-- Über -->
+    <string name="about_description">3D-Modellbetrachter in Augmented Reality mit Bildmarkern (ARCore + SceneView/Filament). Laden Sie ein Modell, richten Sie die Kamera auf ein gedrucktes Bild und sehen Sie das Modell darauf verankert.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_open_site">Website öffnen</string>
+    <string name="about_send_email">E-Mail senden</string>
+
+    <!-- Feedback und Diagnose -->
+    <string name="feedback_subject">ArkZ ARModelViewer — Feedback</string>
+    <string name="feedback_body">Hallo!\n\nSchreiben Sie hier Ihren Kommentar, Ihr Lob oder Ihr Problem:\n\n\n---\nApp-Version: %1$s\nGerät: %2$s\nGeladenes Modell: %3$s</string>
+    <string name="diagnostics_title">ArkZ ARModelViewer — Diagnose</string>
+    <string name="diagnostics_model">Geladenes Modell: %1$s</string>
+    <string name="diagnostics_markers">Registrierte Marker: %1$d</string>
+    <string name="diagnostics_selected_marker">Ausgewählter Marker: %1$s</string>
+    <string name="diagnostics_status">Letzter Status: %1$s</string>
+
+    <!-- App teilen -->
+    <string name="share_app_subject">ArkZ ARModelViewer</string>
+    <string name="share_app_text">Entdecken Sie ArkZ ARModelViewer: 3D-Modelle in Augmented Reality, verankert an Bildmarkern.\n%1$s</string>
+
+    <!-- Aufnahmequalität -->
+    <string name="capture_quality_title">Aufnahmequalität</string>
+    <string name="capture_quality_hint">Je höher die Qualität, desto mehr Speicher benötigt die Aufnahme — auf Geräten mit wenig freiem Speicher sind kleinere Optionen besser.</string>
+    <string name="capture_quality_standard">Standard (1280 px)</string>
+    <string name="capture_quality_high">Hoch (1920 px)</string>
+    <string name="capture_quality_max">Maximal (Bildschirmauflösung)</string>
+    <string name="capture_quality_current">Aufnahmequalität: %1$s</string>
+
+    <!-- Druckblatt des Markers -->
+    <string name="print_sheet_note">Drucken Sie zu 100%% Maßstab, der Marker ist %1$s cm breit.</string>
+    <string name="print_sheet_saved">Druckblatt gespeichert in %1$s</string>
+    <string name="print_sheet_failed">Druckblatt konnte nicht erstellt werden: %1$s</string>
+    <string name="status_print_sheet_needs_marker">Wählen Sie zuerst einen bestimmten Marker in \"Marker verwalten\", um das Druckblatt zu exportieren</string>
+
+    <!-- Statusmeldungen -->
+    <string name="status_starting_camera">Kamera und ARCore werden gestartet…</string>
+    <string name="status_no_model">Kein Modell geladen — tippen Sie auf die Schaltfläche, um eine Datei .glb, .gltf, .obj, .stl, .ply oder .3mf zu wählen</string>
+    <string name="status_loading_model">\"%1$s\" wird geladen…</string>
+    <string name="status_loading_model_slow">\"%1$s\" wird geladen… (großes Modell, bitte warten)</string>
+    <string name="status_model_loaded">Modell \"%1$s\" bereit in %2$s s (größte Abmessung der Datei: %3$s — Einheiten der Datei)</string>
+    <string name="status_scan_marker">Richten Sie die Kamera auf %1$s</string>
+    <string name="status_marker_tracking">Marker erkannt: %1$s</string>
+    <string name="status_marker_tracking_no_model">Marker erkannt: %1$s — laden Sie ein 3D-Modell, um es anzuzeigen</string>
+    <string name="status_capture_in_progress">Bitte warten: eine Aufnahme läuft bereits</string>
+    <string name="status_diagnostics_copied">Diagnose kopiert — fügen Sie sie in die Support-E-Mail ein</string>
+    <string name="status_diagnostics_failed">Diagnose konnte nicht kopiert werden</string>
+    <string name="status_auto_scale">Automatische Skalierung: größte Abmessung = %1$s m</string>
+    <string name="status_load_model_first">Laden Sie ein 3D-Modell, bevor Sie den Inspektionsmodus öffnen</string>
+    <string name="status_reset_done">Erkennung neu gestartet — richten Sie die Kamera auf den Marker</string>    <string name="menu_language">Sprache</string>
+    <string name="language_current">Sprache: %1$s</string>
+    <string name="language_dialog_title">App-Sprache</string>
+    <string name="language_dialog_hint">Wählen Sie die App-Sprache. \"System\" folgt der Gerätesprache.</string>
+    <string name="language_system">System (Gerätesprache)</string>
+</resources>

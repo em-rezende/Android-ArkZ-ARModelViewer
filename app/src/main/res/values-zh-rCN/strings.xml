@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 相机权限 -->
+    <string name="permission_title">需要相机权限</string>
+    <string name="permission_rationale">ARCore 使用相机来理解环境并识别图像标记。没有此权限，增强现实模式无法启动。</string>
+    <string name="permission_denied_hint">权限已被拒绝。请在应用设置中授予相机访问权限以使用增强现实。</string>
+    <string name="permission_grant">允许访问相机</string>
+    <string name="permission_open_settings">打开应用设置</string>
+
+    <!-- 工具栏操作 -->
+    <string name="action_pick_model">加载 3D 模型</string>
+    <string name="action_reset">重新开始</string>
+    <string name="action_choose_marker">选择标记</string>
+    <string name="action_auto_scale">自动缩放（适配标记）</string>
+    <string name="action_exit">退出</string>
+    <string name="action_adjust_model">模型调整（旋转和大小）</string>
+    <string name="action_capture">截屏</string>
+
+    <!-- 标记 -->
+    <string name="marker_dialog_title">管理标记</string>
+    <string name="marker_dialog_hint">将相机对准所选的二维码。您可以打印它（宽 15 厘米）或在其他屏幕上显示。</string>
+    <string name="marker_all">所有标记</string>
+    <string name="marker_preview_description">标记预览</string>
+    <string name="marker_create">创建/加载标记</string>
+    <string name="marker_create_title">创建/加载标记</string>
+    <string name="marker_create_hint">为标记命名并选择一种方式：\"创建标记\"由应用绘制新图案并保存 PNG 以便打印；\"加载标记\"使用设备上已有的图片（未输入名称时使用文件名）。</string>
+    <string name="marker_create_name_label">标记名称</string>
+    <string name="marker_create_name_hint">例如：项目 1</string>
+    <string name="marker_create_confirm">创建标记</string>
+    <string name="marker_load_confirm">加载标记</string>
+    <string name="marker_export">保存标记图片以便打印</string>
+    <string name="marker_remove">删除自定义标记</string>
+    <string name="status_marker_created">标记 \"%1$s\" 已创建。PNG 已保存到 %2$s</string>
+    <string name="status_marker_created_no_export">标记 \"%1$s\" 已创建（无法导出 PNG：%2$s）</string>
+    <string name="status_marker_generated">标记 \"%1$s\" 已创建。PNG 已保存到 %2$s — 请按 15 厘米宽度打印并对准相机</string>
+    <string name="status_marker_name_required">请先为标记输入名称</string>
+    <string name="status_marker_create_failed">无法创建标记</string>
+    <string name="status_marker_exported">图片已保存到 %1$s</string>
+
+    <!-- 加载模型 -->
+    <string name="model_dialog_title">加载 3D 模型</string>
+    <string name="model_dialog_hint">系统选择器不使用类型筛选：Android 不认识 .glb、.obj 和 .ply 的类型，若加筛选这些文件会显示为灰色。请选择模型文件 — 应用会检查扩展名，并在格式不受支持时说明原因。</string>
+    <string name="model_dialog_formats">支持的格式：.glb、.gltf（glTF 2.0）、.obj、.stl、.ply 和 .3mf。不支持 .dae（COLLADA）格式：请转换为 .glb。</string>
+    <string name="model_dialog_pick">选择文件</string>
+    <string name="model_dialog_cancel">取消</string>
+
+    <!-- 模型调整 -->
+    <string name="adjust_title">模型调整</string>
+    <string name="adjust_rotation_x">旋转 X（倾斜）</string>
+    <string name="adjust_rotation_y">旋转 Y（转向）</string>
+    <string name="adjust_rotation_z">旋转 Z（翻滚）</string>
+    <string name="adjust_size">大小（最大尺寸）</string>
+    <string name="adjust_elevation_z">高度 Z（标记平面）</string>
+    <string name="adjust_reset">重置</string>
+    <!-- 菜单（右上角三点） -->
+    <string name="menu_more">菜单</string>
+    <string name="menu_help">帮助</string>
+    <string name="menu_about">关于</string>
+    <string name="menu_feedback_email">通过电子邮件发送反馈</string>
+    <string name="menu_rate_play">在 Google Play 评分</string>
+    <string name="menu_copy_diagnostics">复制诊断信息（支持）</string>
+    <string name="menu_share_app">分享应用</string>
+    <string name="menu_capture_quality">截图质量</string>
+    <string name="menu_print_sheet">导出标记打印页</string>
+    <string name="value_none">无</string>
+
+    <!-- 帮助 -->
+    <string name="help_body">1. 加载模型\n点击右下角的按钮（加载 3D 模型），选择 .glb、.gltf、.obj、.stl、.ply 或 .3mf 文件。不支持 .dae（COLLADA）和 .fbx 格式 — 请先转换为 .glb（Blender：文件 ▸ 导出 ▸ glTF 2.0）。由 CAD/SketchUp 导出的模型通常以毫米为单位，应用会自动调整比例；包含数千个部件的模型需要数十秒才能打开（状态栏会提示）。\n\n2. 选择或创建标记\n在底部工具栏点击二维码图标（管理标记），然后选择创建/加载标记：\n• 创建标记：输入名称，应用会绘制图案、保存为标记并导出 PNG 到 Pictures/ArkZ ARModelViewer/Marcadores — 请按 15 厘米宽度打印。\n• 加载标记：使用设备上已有的图片（照片、屏幕截图、二维码）。\n\n3. 对准相机\n在 30–60 厘米处对准打印的图案，光线充足，避免反光、折痕和过于倾斜的角度。图案应占据画面的较大比例。未加载模型时图案上会出现一个青色立方体 — 这表示识别正在工作。\n\n4. 调整模型\n在模型调整面板（工具栏中的调节图标）：旋转 X/Y/Z（初始为 0°、0°、0°）、大小（最大尺寸，单位米）和高度 Z（让模型远离或靠近标记平面）。在屏幕上，双指捏合也可改变大小，自动缩放按钮会把模型调整到标记宽度。\n\n5. 截屏\n相机按钮会把当前画面（相机 + 模型，不含界面）保存到 Pictures/ArkZ ARModelViewer，并播放快门声。\n\n其他提示\n• 重新开始（工具栏第一个按钮）会清除识别结果，并把旋转、大小和高度恢复为默认值。\n• 如果模型没有显示，Logcat 会说明原因：adb logcat -s ArkZARModelViewer</string>
+
+    <!-- 关于 -->
+    <string name="about_description">使用图像标记的增强现实 3D 模型查看器（ARCore + SceneView/Filament）。加载模型，将相机对准打印的图案，即可看到模型固定在图案上。</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_open_site">打开网站</string>
+    <string name="about_send_email">发送电子邮件</string>
+
+    <!-- 反馈与诊断 -->
+    <string name="feedback_subject">ArkZ ARModelViewer — 反馈</string>
+    <string name="feedback_body">您好！\n\n请在此写下您的意见、赞扬或问题：\n\n\n---\n应用版本：%1$s\n设备：%2$s\n已加载模型：%3$s</string>
+    <string name="diagnostics_title">ArkZ ARModelViewer — 诊断</string>
+    <string name="diagnostics_model">已加载模型：%1$s</string>
+    <string name="diagnostics_markers">已注册标记：%1$d</string>
+    <string name="diagnostics_selected_marker">已选标记：%1$s</string>
+    <string name="diagnostics_status">最近状态：%1$s</string>
+
+    <!-- 分享应用 -->
+    <string name="share_app_subject">ArkZ ARModelViewer</string>
+    <string name="share_app_text">推荐 ArkZ ARModelViewer：在增强现实中查看固定在图像标记上的 3D 模型。\n%1$s</string>
+
+    <!-- 截图质量 -->
+    <string name="capture_quality_title">截图质量</string>
+    <string name="capture_quality_hint">质量越高，截图占用的内存越多 — 内存较少的设备建议选择较小的选项。</string>
+    <string name="capture_quality_standard">标准（1280 px）</string>
+    <string name="capture_quality_high">高（1920 px）</string>
+    <string name="capture_quality_max">最高（屏幕分辨率）</string>
+    <string name="capture_quality_current">截图质量：%1$s</string>
+
+    <!-- 标记打印页 -->
+    <string name="print_sheet_note">请按 100%% 比例打印，标记宽度为 %1$s 厘米。</string>
+    <string name="print_sheet_saved">打印页已保存到 %1$s</string>
+    <string name="print_sheet_failed">无法生成打印页：%1$s</string>
+    <string name="status_print_sheet_needs_marker">请先在\"管理标记\"中选择一个具体标记，再导出打印页</string>
+
+    <!-- 状态消息 -->
+    <string name="status_starting_camera">正在启动相机和 ARCore…</string>
+    <string name="status_no_model">未加载模型 — 点击按钮选择 .glb、.gltf、.obj、.stl、.ply 或 .3mf 文件</string>
+    <string name="status_loading_model">正在加载 \"%1$s\"…</string>
+    <string name="status_loading_model_slow">正在加载 \"%1$s\"…（模型较大，请稍候）</string>
+    <string name="status_model_loaded">模型 \"%1$s\" 已在 %2$s 秒内就绪（文件中的最大尺寸：%3$s — 文件自身单位）</string>
+    <string name="status_scan_marker">将相机对准 %1$s</string>
+    <string name="status_marker_tracking">已识别标记：%1$s</string>
+    <string name="status_marker_tracking_no_model">已识别标记：%1$s — 加载 3D 模型即可显示</string>
+    <string name="status_capture_in_progress">请稍候：已有截图正在进行</string>
+    <string name="status_diagnostics_copied">诊断信息已复制 — 请粘贴到支持邮件中</string>
+    <string name="status_diagnostics_failed">无法复制诊断信息</string>
+    <string name="status_auto_scale">自动缩放：最大尺寸 = %1$s 米</string>
+    <string name="status_load_model_first">请先加载 3D 模型再打开检查模式</string>
+    <string name="status_reset_done">识别已重新开始 — 请将相机对准标记</string>    <string name="menu_language">语言</string>
+    <string name="language_current">语言：%1$s</string>
+    <string name="language_dialog_title">应用语言</string>
+    <string name="language_dialog_hint">选择应用语言。\"系统\"跟随设备语言。</string>
+    <string name="language_system">系统（设备语言）</string>
+</resources>

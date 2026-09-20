@@ -1,0 +1,26 @@
+# Normaliza o fim de linha: o desenvolvimento é feito no Windows e o repositório
+# (GitHub) espera LF. Sem isto, o Git converteria arquivos texto e o diff entre
+# Windows/Linux ficaria cheio de "linhas alteradas" que ninguém mudou.
+* text=auto eol=lf
+
+# Binários: nunca converter (nem tentar tratar como texto)
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.webp       binary
+*.jar        binary
+*.apk        binary
+*.aab        binary
+*.keystore   binary
+*.jks        binary
+*.blend      binary
+*.skp        binary
+
+# Scripts que rodam no Windows continuam em CRLF
+*.ps1        text eol=crlf
+*.bat        text eol=crlf
+*.cmd        text eol=crlf
+
+# Gradle Wrapper (jar binário + shell script com LF)
+gradle/wrapper/gradle-wrapper.jar binary
+gradlew                           text eol=lf

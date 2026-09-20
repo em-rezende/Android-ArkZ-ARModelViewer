@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Camera permission -->
+    <string name="permission_title">Camera permission required</string>
+    <string name="permission_rationale">ARCore uses the camera to understand the environment and detect the image markers. Without this permission the Augmented Reality mode cannot start.</string>
+    <string name="permission_denied_hint">The permission was denied. Grant camera access in the app settings to use Augmented Reality.</string>
+    <string name="permission_grant">Allow camera access</string>
+    <string name="permission_open_settings">Open app settings</string>
+
+    <!-- Toolbar actions -->
+    <string name="action_pick_model">Load 3D model</string>
+    <string name="action_reset">Restart</string>
+    <string name="action_choose_marker">Choose marker</string>
+    <string name="action_auto_scale">Auto scale (fit to marker)</string>
+    <string name="action_exit">Exit</string>
+    <string name="action_adjust_model">Model adjustments (rotation and size)</string>
+    <string name="action_capture">Capture screen</string>
+
+    <!-- Markers -->
+    <string name="marker_dialog_title">Manage marker</string>
+    <string name="marker_dialog_hint">Point the camera at the chosen QR code. You can print it (15 cm wide) or show it on another screen.</string>
+    <string name="marker_all">All markers</string>
+    <string name="marker_preview_description">Marker preview</string>
+    <string name="marker_create">Create/Load marker</string>
+    <string name="marker_create_title">Create/Load marker</string>
+    <string name="marker_create_hint">Name the marker and pick one of the options: \"Create marker\" draws a new pattern in the app and saves the PNG for printing; \"Load marker\" uses an image already on the device (with no name typed, the file name is used as the label).</string>
+    <string name="marker_create_name_label">Marker name</string>
+    <string name="marker_create_name_hint">E.g. Project 1</string>
+    <string name="marker_create_confirm">Create marker</string>
+    <string name="marker_load_confirm">Load marker</string>
+    <string name="marker_export">Save marker image for printing</string>
+    <string name="marker_remove">Remove custom marker</string>
+    <string name="status_marker_created">Marker \"%1$s\" created. PNG saved to %2$s</string>
+    <string name="status_marker_created_no_export">Marker \"%1$s\" created (could not export the PNG: %2$s)</string>
+    <string name="status_marker_generated">Marker \"%1$s\" created. PNG saved to %2$s — print it 15 cm wide and point the camera</string>
+    <string name="status_marker_name_required">Give the marker a name before creating it</string>
+    <string name="status_marker_create_failed">Could not create the marker</string>
+    <string name="status_marker_exported">Image saved to %1$s</string>
+
+    <!-- Model loading -->
+    <string name="model_dialog_title">Load 3D model</string>
+    <string name="model_dialog_hint">The system picker opens with no type filter: Android does not know the types of .glb, .obj and .ply files and, with a filter, they would appear greyed out. Pick the model file — the app checks the extension and explains when the format is not supported.</string>
+    <string name="model_dialog_formats">Supported formats: .glb, .gltf (glTF 2.0), .obj, .stl, .ply and .3mf. The .dae (COLLADA) format is not supported: convert it to .glb.</string>
+    <string name="model_dialog_pick">Choose file</string>
+    <string name="model_dialog_cancel">Cancel</string>
+
+    <!-- Model adjustments -->
+    <string name="adjust_title">Model adjustments</string>
+    <string name="adjust_rotation_x">Rotation X (tilt)</string>
+    <string name="adjust_rotation_y">Rotation Y (turn)</string>
+    <string name="adjust_rotation_z">Rotation Z (roll)</string>
+    <string name="adjust_size">Size (largest dimension)</string>
+    <string name="adjust_elevation_z">Elevation Z (marker plane)</string>
+    <string name="adjust_reset">Reset</string>
+    <!-- Menu (three dots, top right) -->
+    <string name="menu_more">Menu</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_about">About</string>
+    <string name="menu_feedback_email">Send feedback by e-mail</string>
+    <string name="menu_rate_play">Rate on Google Play</string>
+    <string name="menu_copy_diagnostics">Copy diagnostics (for support)</string>
+    <string name="menu_share_app">Share the app</string>
+    <string name="menu_capture_quality">Capture quality</string>
+    <string name="menu_print_sheet">Export the marker print sheet</string>
+    <string name="value_none">none</string>
+
+    <!-- Help -->
+    <string name="help_body">1. LOAD THE MODEL\nTap the button in the bottom right corner (Load 3D model) and pick a .glb, .gltf, .obj, .stl, .ply or .3mf file. The .dae (COLLADA) and .fbx formats are not supported — convert them to .glb (Blender: File ▸ Export ▸ glTF 2.0). Models exported from CAD/SketchUp are usually in millimetres and the app scales them automatically; models with thousands of parts take tens of seconds to load (the status bar tells you).\n\n2. CHOOSE OR CREATE THE MARKER\nIn the bottom bar, tap the QR code icon (Manage marker) and then Create/Load marker:\n• Create marker: type a name and the app draws the pattern, saves it as a marker and exports the PNG to Pictures/ArkZ ARModelViewer/Marcadores — print it 15 cm wide.\n• Load marker: use an image already on the device (photo, screenshot, QR code).\n\n3. POINT THE CAMERA\nPoint at the printed image from 30–60 cm, with good lighting, avoiding glare, folds and very shallow angles. The image should fill a good part of the frame. With no model loaded a cyan cube appears on it — that is the indicator that detection is working.\n\n4. ADJUST THE MODEL\nIn the Model adjustments panel (the controls icon in the bar): rotation X/Y/Z (0°, 0° and 0° by default), size (largest dimension, in metres) and Elevation Z (moves the model away from or towards the marker plane). On screen, pinch also changes the size and the auto-scale button fits the model to the marker width.\n\n5. CAPTURE THE SCREEN\nThe camera button saves the current view (camera + model, without the interface) to Pictures/ArkZ ARModelViewer, playing the shutter sound.\n\nOTHER TIPS\n• Restart (first button in the bar) drops the detections and returns rotation, size and elevation to the defaults.\n• If a model does not show up, Logcat explains why: adb logcat -s ArkZARModelViewer</string>
+
+    <!-- About -->
+    <string name="about_description">3D model viewer in Augmented Reality with image markers (ARCore + SceneView/Filament). Load a model, point the camera at a printed image and see the model anchored to it.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="about_open_site">Open website</string>
+    <string name="about_send_email">Send e-mail</string>
+
+    <!-- Feedback and diagnostics -->
+    <string name="feedback_subject">ArkZ ARModelViewer — feedback</string>
+    <string name="feedback_body">Hello!\n\nWrite your comment, praise or problem here:\n\n\n---\nApp version: %1$s\nDevice: %2$s\nLoaded model: %3$s</string>
+    <string name="diagnostics_title">ArkZ ARModelViewer — diagnostics</string>
+    <string name="diagnostics_model">Loaded model: %1$s</string>
+    <string name="diagnostics_markers">Registered markers: %1$d</string>
+    <string name="diagnostics_selected_marker">Selected marker: %1$s</string>
+    <string name="diagnostics_status">Last status: %1$s</string>    <!-- Share the app -->
+    <string name="share_app_subject">ArkZ ARModelViewer</string>
+    <string name="share_app_text">Check out ArkZ ARModelViewer: view 3D models in Augmented Reality, anchored to image markers.\n%1$s</string>
+
+    <!-- Screen capture quality -->
+    <string name="capture_quality_title">Capture quality</string>
+    <string name="capture_quality_hint">The higher the quality, the more memory the capture uses — on devices with little free memory, prefer the smaller options.</string>
+    <string name="capture_quality_standard">Standard (1280 px)</string>
+    <string name="capture_quality_high">High (1920 px)</string>
+    <string name="capture_quality_max">Maximum (screen resolution)</string>
+    <string name="capture_quality_current">Capture quality: %1$s</string>
+
+    <!-- Marker print sheet -->
+    <string name="print_sheet_note">Print at 100%% scale, with the marker measuring %1$s cm wide.</string>
+    <string name="print_sheet_saved">Print sheet saved to %1$s</string>
+    <string name="print_sheet_failed">Could not create the print sheet: %1$s</string>
+    <string name="status_print_sheet_needs_marker">Choose a specific marker in \"Manage marker\" before exporting the print sheet</string>
+
+    <!-- Status messages -->
+    <string name="status_starting_camera">Starting the camera and ARCore…</string>
+    <string name="status_no_model">No model loaded — tap the button to choose a .glb, .gltf, .obj, .stl, .ply or .3mf file</string>
+    <string name="status_loading_model">Loading \"%1$s\"…</string>
+    <string name="status_loading_model_slow">Loading \"%1$s\"… (large model, please wait)</string>
+    <string name="status_model_loaded">Model \"%1$s\" ready in %2$s s (largest dimension in the file: %3$s — units of the file itself)</string>
+    <string name="status_scan_marker">Point the camera at the %1$s</string>
+    <string name="status_marker_tracking">Marker detected: %1$s</string>
+    <string name="status_marker_tracking_no_model">Marker detected: %1$s — load a 3D model to display it</string>
+    <string name="status_capture_in_progress">Please wait: a capture is already in progress</string>
+    <string name="status_diagnostics_copied">Diagnostics copied — paste it into the support e-mail</string>
+    <string name="status_diagnostics_failed">Could not copy the diagnostics</string>
+    <string name="status_auto_scale">Auto scale: largest dimension = %1$s m</string>
+    <string name="status_load_model_first">Load a 3D model before opening the inspection mode</string>
+    <string name="status_reset_done">Detection restarted — point the camera at the marker</string>    <string name="menu_language">Language</string>
+    <string name="language_current">Language: %1$s</string>
+    <string name="language_dialog_title">App language</string>
+    <string name="language_dialog_hint">Choose the app language. \"System\" follows the device language.</string>
+    <string name="language_system">System (device language)</string>
+</resources>

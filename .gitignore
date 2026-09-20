@@ -1,0 +1,31 @@
+# Arquivos de build / locais
+*.iml
+.gradle/
+build/
+local.properties
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Estado local das ferramentas (sessões do compilador Kotlin 2.x, caches do AGP)
+.kotlin/
+
+# Artefatos gerados pelo Gradle/Android
+*.apk
+*.aab
+*.ap_
+*.dex
+*.hprof
+lint-results*
+output.json
+
+# Assinatura do APK: NUNCA versionar (contém a chave privada)
+*.jks
+*.keystore
+keystore.properties
+
+# Logs locais
+*.log
+
