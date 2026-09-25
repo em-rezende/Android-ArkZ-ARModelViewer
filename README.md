@@ -116,6 +116,9 @@ publicar um APK instalável:
 > O repositório **não** guarda chave nenhuma: `*.jks`, `*.keystore` e
 > `keystore.properties` estão no `.gitignore`. Guarde a chave e as senhas em
 > lugar seguro — sem ela não é possível publicar atualizações do mesmo app.
+> O passo a passo completo (fingerprint SHA-256 do certificado, backup da chave,
+> troca de senha sem perder a identidade e conferência do APK com `apksigner`)
+> está em [SEGURANCA-E-KEYSTORE.md](SEGURANCA-E-KEYSTORE.md).
 
 ### Assinatura dos APKs publicados
 
@@ -172,9 +175,11 @@ ArkZ ARModelViewer/
 │   ├── publish-github.ps1                    # publica repositório + release no GitHub
 │   ├── generated-markers/                    # marcadores alternativos (sem texto)
 │   └── print/                                # folhas prontas para imprimir (QR + legenda abaixo)
+├── dist/                                     # APK assinado da versão publicada (fora do Git)
 ├── CHANGELOG.md                              # histórico de versões (Keep a Changelog)
 ├── CONTRIBUTING.md                           # como relatar problemas e contribuir
-├── SECURITY.md                               # política de segurança
+├── SECURITY.md                               # política de segurança (como relatar falhas)
+├── SEGURANCA-E-KEYSTORE.md                   # assinatura do APK: chave, senhas e backup
 ├── LICENSE                                   # GNU General Public License v3.0
 ├── .gitattributes / .gitignore               # fim de linha (LF) e o que não é versionado
 └── README.md
@@ -306,8 +311,8 @@ A ferramenta `tools/inspect-model-formats.ps1 <pasta>` mostra, para cada arquivo
 o formato que o SceneView **realmente** detecta (é a mesma lógica de *sniffing*
 da biblioteca) — útil quando um modelo "não abre".
 
-Modelos prontos para teste (os mesmos formatos desta tabela, com um logotipo e um
-edifício): veja [Modelos 3D para teste](#modelos-3d-para-teste).
+Modelos prontos para teste (os mesmos formatos desta tabela, com um logotipo e uma
+casa): veja [Modelos 3D para teste](#modelos-3d-para-teste).
 
 ---
 
@@ -315,18 +320,21 @@ edifício): veja [Modelos 3D para teste](#modelos-3d-para-teste).
 
 A pasta [`3d_models/`](3d_models) traz **cinco arquivos** prontos para exercitar o
 carregamento, a detecção de formato e a escala automática: o mesmo logotipo em
-**quatro formatos** e um edifício em `.glb`.
+**quatro formatos** e uma casa em `.glb`.
 
 | Arquivo | Formato | Tamanho | O que ele exercita |
 |---|---|---|---|
-| `ArkZ_logo.glb` | glTF binário (`.glb`) | 93 KB | caminho nativo recomendado — referência para comparar com os outros quatro |
-| `ArkZ_logo.obj` | Wavefront OBJ | 141 KB | extração de geometria em OBJ (928 vértices, 786 faces); a biblioteca reconhece o arquivo como OBJ porque a primeira face (linha 119, no byte 3.091) cai **dentro** dos primeiros 4 KB que ela examina |
-| `ArkZ_logo.ply` | PLY binário (`binary_little_endian`, Blender 5.2) | 34 KB | PLY binário — o menor arquivo do conjunto |
-| `ArkZ_logo.stl` | STL binário (exportado do SketchUp) | 89 KB | STL binário com 1.812 triângulos; bom caso para conferir a maior dimensão medida e a escala |
-| `Edificio.glb` | glTF binário (`.glb`) | 1,3 MB | modelo de arquitetura, bem maior: tempo de carregamento, iluminação/sombreamento e ajuste fino de escala |
+| `ArkZ_logo.glb` | glTF binário (`.glb`, exportado do Blender 5.2) | 64 KB | caminho nativo recomendado — referência para comparar com os outros quatro (um nó `ArkZLogo`, uma malha, um material) |
+| `ArkZ_logo.obj` | Wavefront OBJ | 48 KB | extração de geometria em OBJ (771 vértices, 431 faces). Aqui a **primeira face só aparece na linha 993 (byte 29.305)** — muito depois dos 4 KB que a biblioteca examina —, então o arquivo cai no caminho de **conversão para `.glb`** (`ObjLoader.toGlb`) descrito em *Solução de problemas*: é o caso de teste do `.obj` que "não abre" |
+| `ArkZ_logo.ply` | PLY binário (`binary_little_endian`, Blender 5.2 LTS) | 19 KB | PLY binário com 771 vértices e 431 faces — o menor arquivo do conjunto |
+| `ArkZ_logo.stl` | STL binário (exportado do SketchUp) | 73 KB | STL binário com **1.498 triângulos**; bom caso para conferir a maior dimensão medida e a escala |
+| `House.glb` | glTF binário (`.glb`, exportado do Blender 5.2) | 7,5 KB | a cena com mais partes: **7 nós, 4 malhas e 4 materiais** — vários objetos e vários materiais no mesmo arquivo, além de iluminação/sombreamento e ajuste fino de escala |
 
-**Total: 1,7 MB.** Para conferir os formatos como a biblioteca os vê (mesma lógica
-de *sniffing* do SceneView):
+**Total: 211 KB (216.369 bytes).** O logotipo tem a mesma geometria nos quatro
+formatos (771 vértices e 431 faces no `.obj` e no `.ply`; 1.498 triângulos no
+`.stl`), então os quatro carregamentos devem chegar ao mesmo resultado sobre o
+marcador. Para conferir os formatos como a biblioteca os vê (mesma lógica de
+*sniffing* do SceneView):
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/inspect-model-formats.ps1 3d_models
@@ -339,30 +347,34 @@ extensão corretos). Evite o `raw.githubusercontent.com` para o `.obj`: ele é s
 como texto e alguns navegadores/gerenciadores **abrem em vez de baixar** — e o app
 valida o formato pela extensão.
 
-* [`ArkZ_logo.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.glb)
-* [`ArkZ_logo.obj`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.obj)
-* [`ArkZ_logo.ply`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.ply)
-* [`ArkZ_logo.stl`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.stl)
-* [`Edificio.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/Edificio.glb)
+| Arquivo | Endereço no repositório (`raw`) | Endereço no release (*Assets*) |
+|---|---|---|
+| `ArkZ_logo.glb` | [`raw/main/3d_models/ArkZ_logo.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.glb) | [`releases/download/v1.0.0/ArkZ_logo.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/download/v1.0.0/ArkZ_logo.glb) |
+| `ArkZ_logo.obj` | [`raw/main/3d_models/ArkZ_logo.obj`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.obj) | [`releases/download/v1.0.0/ArkZ_logo.obj`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/download/v1.0.0/ArkZ_logo.obj) |
+| `ArkZ_logo.ply` | [`raw/main/3d_models/ArkZ_logo.ply`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.ply) | [`releases/download/v1.0.0/ArkZ_logo.ply`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/download/v1.0.0/ArkZ_logo.ply) |
+| `ArkZ_logo.stl` | [`raw/main/3d_models/ArkZ_logo.stl`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/ArkZ_logo.stl) | [`releases/download/v1.0.0/ArkZ_logo.stl`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/download/v1.0.0/ArkZ_logo.stl) |
+| `House.glb` | [`raw/main/3d_models/House.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/raw/main/3d_models/House.glb) | [`releases/download/v1.0.0/House.glb`](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/download/v1.0.0/House.glb) |
 
-Os mesmos cinco arquivos estão anexados em **Assets** nas
-[releases](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases) — é o
-caminho mais confiável, porque o download vem com o nome certo e o cabeçalho de
-anexo. Tamanhos esperados (arquivo menor = download cortado):
+Os mesmos cinco arquivos estão anexados em **Assets** na
+[release v1.0.0](https://github.com/em-rezende/Android-ArkZ-ARModelViewer/releases/tag/v1.0.0)
+— é o caminho mais confiável, porque o download vem com o nome certo e o cabeçalho
+de anexo (é o que evita o `.obj` "abrir" como texto em vez de baixar). Tamanhos
+esperados (arquivo menor = download cortado):
 
 | Arquivo | Bytes | SHA-256 |
 |---|---|---|
-| `ArkZ_logo.glb` | 94.796 | `c77885aba3fad3007855d0caf81ebb6d3cce004a915686568998070029fd9693` |
-| `ArkZ_logo.obj` | 144.504 | `1d06d92f8c77b993ba7a53445f4479c4dd6c0c6176c93b2e7e6cb7b6321dd7eb` |
-| `ArkZ_logo.ply` | 34.912 | `fc8a0a6e4efd738f501c2e2da4b58bf6b12dc6cfad7a2a01a859c9f32b1b6f02` |
-| `ArkZ_logo.stl` | 90.684 | `f7e30b515a9a3b3fadd3dd9c3591f141853138fd4941c9e8705d085555cba2a3` |
-| `Edificio.glb` | 1.358.704 | `30cb3de4c013073a83aa2f68a80c9fc911656dbc76b08bf621f194d22e45b35f` |
+| `ArkZ_logo.glb` | 65.628 | `493d580e1b7e27a20fd213d4bec394a4c3c350e546569fa7b53ec99a9e5b8c74` |
+| `ArkZ_logo.obj` | 48.711 | `7015e67af35161ee8b212ca78a1642576c17b89204ea15f83a20dfc123fb9a0c` |
+| `ArkZ_logo.ply` | 19.342 | `db8332541307a8e265de7edde3977a3c4b27759e597982aa9d40eed4f4ce3e5c` |
+| `ArkZ_logo.stl` | 74.984 | `eb86c23eb72f595bd396e979acb547096dfe8322265ea9f6517fb4effce7fb83` |
+| `House.glb` | 7.704 | `596b44540c08e75bdff269454a182c28694ff44bdc7450a3833934be40a8edb1` |
 
-Conferência no PC:
+Conferência no PC (tamanho e SHA-256 dos cinco arquivos de uma vez):
 
 ```powershell
-Get-ChildItem 3d_models | Select-Object Name, Length          # compare com a tabela
-Get-FileHash .\ArkZ_logo.glb -Algorithm SHA256                # e com o SHA-256 acima
+Get-ChildItem 3d_models -File | Select-Object Name, Length    # compare com a tabela
+Get-ChildItem 3d_models -File | Get-FileHash -Algorithm SHA256 |
+  Select-Object @{n='Arquivo';e={Split-Path $_.Path -Leaf}}, Hash
 ```
 
 ### Como usar no aparelho
