@@ -41,3 +41,13 @@ Relatos que fazem sentido aqui:
 
 Não é escopo: aparelho sem ARCore, câmera com defeito, marcador mal impresso e
 dúvidas de uso (use as *issues* ou a seção *Solução de problemas* do README).
+
+## Assinatura do APK (chave, senhas e backup)
+
+Este documento trata da segurança do **aplicativo** (o que ele faz com os dados
+do usuário). A outra metade da segurança do projeto é a **chave de assinatura**:
+onde ficam `arkz-release.jks` e `keystore.properties`, o *fingerprint* do
+certificado (SHA-256), como fazer e testar o backup da chave, como trocar as
+senhas sem perder a identidade do app e como conferir a assinatura de um APK
+publicado — tudo em
+[SEGURANCA-E-KEYSTORE.md](SEGURANCA-E-KEYSTORE.md).

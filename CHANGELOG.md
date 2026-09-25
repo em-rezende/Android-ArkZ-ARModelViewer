@@ -9,11 +9,18 @@ e o projeto usa [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 ### Adicionado
 
 - Pasta [`3d_models/`](3d_models) com **cinco modelos de teste** — o logotipo em
-  glTF binário (`.glb`), Wavefront OBJ, PLY binário e STL binário, mais um edifício
-  em `.glb` — e a seção *Modelos 3D para teste* no README, com o que cada arquivo
-  exercita e como carregá-los no aparelho.
+  glTF binário (`.glb`), Wavefront OBJ, PLY binário e STL binário, mais a casa
+  `House.glb` — e a seção *Modelos 3D para teste* no README, com o que cada
+  arquivo exercita, o tamanho, o SHA-256 e como carregá-los no aparelho.
 - `.gitattributes`: extensões de modelo 3D marcadas como binárias (STL/PLY/GLB
   binários seriam corrompidos pela conversão de fim de linha).
+- [`SEGURANCA-E-KEYSTORE.md`](SEGURANCA-E-KEYSTORE.md): guia da assinatura do
+  APK — onde ficam a chave (`arkz-release.jks`) e as senhas
+  (`keystore.properties`), *fingerprint* SHA-256 do certificado, backup da
+  chave, troca de senha sem perder a identidade e conferência do APK publicado
+  com `apksigner`/`aapt2`.
+- Pasta `dist/` (fora do Git): APK assinado da versão publicada
+  (`ArkZ-ARModelViewer-1.0.0.apk`), para distribuir sem recompilar.
 
 ## [1.0.0] — 2026-09-20
 

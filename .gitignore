@@ -29,3 +29,6 @@ keystore.properties
 # Logs locais
 *.log
 
+# Artefatos prontos para distribuir (APK assinado copiado de app/build/outputs)
+dist/
+

@@ -61,7 +61,8 @@ solução imaginada — isso deixa o objetivo claro e permite soluções melhore
 * Um assunto por *pull request* — fica mais fácil revisar e reverter.
 * **Nunca** comite credenciais ou a chave de assinatura (`*.jks`, `*.keystore`,
   `keystore.properties`): o `.gitignore` já cobre, e sem a chave original não é
-  possível publicar atualizações do mesmo app.
+  possível publicar atualizações do mesmo app — veja
+  [SEGURANCA-E-KEYSTORE.md](SEGURANCA-E-KEYSTORE.md).
 * Modelos 3D de teste grandes: informe um link, não anexe ao repositório.
 * A licença não se negocia: o projeto é **GPL-3.0** (veja [LICENSE](LICENSE)) e as
   contribuições entram sob os mesmos termos.
